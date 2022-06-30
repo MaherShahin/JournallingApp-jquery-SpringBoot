@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Journal Entries </h1>
+
+    <p th:text="' Hi ' +${user.getUsername()}"/>
+    <p th:text="'Your journal entries are as follows'" />
+
+    <table>
+        <tr>
+            <td>Title</td>
+            <td>Text</td>
+        </tr>
+        <th:block th:each="entry : ${entries}">
+            <tr>
+                <td th:text="${entry.title}">...</td>
+                <td th:text="${entry.entry}">...</td>
+            </tr>
+        </th:block>
+    </table>
+
+</body>
+</html>

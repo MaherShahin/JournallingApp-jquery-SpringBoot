@@ -1,5 +1,6 @@
 package com.example.JournalApp.Service;
 
+import com.example.JournalApp.Model.JournalEntry;
 import com.example.JournalApp.Model.Role;
 import com.example.JournalApp.Model.User;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class CustomUserDetails implements UserDetails {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
         for (Role role: roles){
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
+            authorities.add(new SimpleGrantedAuthority(role.getRoles().toString()));
         }
         return authorities;
     }
@@ -60,4 +61,17 @@ public class CustomUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Collection<JournalEntry> getEntries(){
+       return user.getEntries();
+    }
+
 }

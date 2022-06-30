@@ -10,6 +10,18 @@
 <h1> User Portal Page</h1>
 <p th:text="' Successful Login! Username of authenticated user is: ' +${#authentication.getPrincipal().getUsername()}"/>
 <p th:text="'Your level of authority is: ' + ${#authentication.getPrincipal().getAuthorities()}" />
+
+<h1> Please enter a journal entry: </h1>
+
+<form method="post" th:action="@{/save-entry}" th:object="${entry}">
+    <label> Title </label>
+    <input type="text" th:field="*{title}">
+    <label> Text </label>
+    <input type="text" th:field="*{entry}">
+    <input type="submit">
+
+</form>
+
 <div sec:authorize="isAuthenticated()">
     <a th:href="@{/logout}">Logout</a>
 </div>

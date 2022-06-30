@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/JournalApp/BrueckePortal.iml" filepath="$PROJECT_DIR$/JournalApp/BrueckePortal.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/JournlingApp.iml" filepath="$PROJECT_DIR$/.idea/JournlingApp.iml" />
     </modules>
   </component>
