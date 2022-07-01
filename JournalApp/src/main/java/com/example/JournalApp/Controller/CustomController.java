@@ -38,6 +38,13 @@ public class CustomController {
         return "login";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        session.invalidate();
+        return "index";
+    }
+
     @GetMapping(value = "/register")
     public String getRegisterPage(@ModelAttribute User user){
         return "register";
@@ -49,18 +56,12 @@ public class CustomController {
         return "index";
     }
 
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
-        HttpSession session = request.getSession(false);
-        session.invalidate();
-        return "logout";
-    }
-
     @GetMapping("/get-user")
-    public String getUser(@ModelAttribute JournalEntry entry, Model model) throws SQLException {
+    public String getUser(@ModelAttribute JournalEntry entry, Model model) {
         model.addAttribute("entry", entry);
         return "userPortal";
     }
+
 
     @PostMapping("/save-entry")
     public String saveEntry(@ModelAttribute JournalEntry entry, Model model){
@@ -84,7 +85,6 @@ public class CustomController {
 
         return "JournalEntries";
     }
-
 
 
 

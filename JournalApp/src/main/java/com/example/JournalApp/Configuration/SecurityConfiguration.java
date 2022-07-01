@@ -36,10 +36,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/register", "/save-user", "/login").permitAll()
+                .antMatchers("/register", "/save-user", "/index").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin().defaultSuccessUrl("/get-user")
-                .and().logout(logout->logout.logoutUrl("/logout"))
+                .and()
+                .formLogin().loginPage("/login")
+                .permitAll()
+                .defaultSuccessUrl("/get-user",true).failureUrl("/index")
+                .and()
+                .logout(logout->logout.logoutUrl("/logout"))
                 .httpBasic();
     }
 
