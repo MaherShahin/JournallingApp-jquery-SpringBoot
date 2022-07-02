@@ -70,8 +70,5 @@ public class CustomUserDetails implements UserDetails {
         this.user = user;
     }
 
-    public Collection<JournalEntry> getEntries(){
-       return user.getEntries();
-    }
 
 }
