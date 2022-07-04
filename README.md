@@ -1,6 +1,6 @@
 # JournalingApp
 
-##Project Description:
+## Project Description:
 
 Personal Journal App with User Authentication and persistence to a MySQL database.
 
@@ -8,14 +8,14 @@ User passwords encrypted on registration
 
 User can view all old entries, add new entries to the journal, edit or delete them.
 
-##Technologies used:
+## Technologies used:
 - Spring Boot
 - Hibernate
 - Thymeleaf
 - Bootstrap
 - MySQL
 
-##To do:
+## To do:
 
 - Add email verification tokens to the registration process before enabling the acccounts
 - Add email alert whenever a login happens
