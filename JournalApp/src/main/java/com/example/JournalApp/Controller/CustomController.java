@@ -48,7 +48,7 @@ public class CustomController {
     public String logout(HttpServletRequest request){
         HttpSession session = request.getSession(false);
         session.invalidate();
-        return "index";
+        return "redirect:/login";
     }
 
 
@@ -56,7 +56,7 @@ public class CustomController {
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute User user) throws SQLException {
         userDetailService.createUser(user);
-        return "index";
+        return "redirect:/login";
     }
 
     @GetMapping("/userPortal")
@@ -64,6 +64,9 @@ public class CustomController {
         Date today = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         String date = formatter.format(today);
+        User user = userDetailService.getAuthenticatedUser();
+
+        model.addAttribute(user);
         model.addAttribute("date",date);
         model.addAttribute("entry", entry);
         return "userPortal";
@@ -104,7 +107,7 @@ public class CustomController {
     public String editEntry(@PathVariable Long entryId, Model model){
 
         User user = userDetailService.getAuthenticatedUser();
-
+        model.addAttribute("user",user);
         model.addAttribute("entry", userDetailService.getEntry(user.getUser_id(),entryId));
         return "editEntry";
 

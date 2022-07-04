@@ -16,37 +16,52 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between mb-3  sticky-top">
+    <a class="navbar-brand mx-3" href="#"  th:text=" ${user.getName()} + '\'s Journal' " >MyJournal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+        <ul class="navbar-nav ">
+            <li class="nav-item active">
+                <a class="nav-link" href="/userPortal">User Portal </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/JournalEntries">All Entries</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
 <div class="container justify-content-center">
     <h1 class="d-flex justify-content-center"> User Portal Page</h1>
-    <p th:text="' Welcome back, ' +${#authentication.getPrincipal().getUsername()} + '. Thank you for taking this time to journal your day'"/>
+    <p th:text="' Welcome back, ' +${user.getName()} + '. Thank you for taking this time to journal your day'"/>
 </div>
 
 <div class="container justify-content-center">
     <h5 th:text="' Today is ' + ${date}"/>
-    <h3> Check all your previous <span><a href="/JournalEntries"> entries</a></span></h3>
 </div>
 
-<hr/>
 
 <div class="container justify-content-center" >
 
-    <h1> Or enter a new entry for the day: </h1>
+    <h2> How is it going today? </h2>
 
     <form th:action="@{/saveEntry}" method="post">
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control " id="title" name="title" placeholder="Title">
+            <input type="text" class="form-control " id="title" name="title" placeholder="Title" required="">
         </div>
         <div class="form-group">
             <label for="entry">Entry</label>
-            <textarea class="form-control " id="entry" name="entry" rows="3"></textarea>
+            <textarea class="form-control " id="entry" name="entry" required="" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-dark ">Submit</button>
+        <button type="submit" class="btn btn-dark mt-3">Submit</button>
 </div>
 
 
-<div sec:authorize="isAuthenticated()">
-    <a th:href="@{/logout}">Logout</a>
-</div>
 </body>
 </html>

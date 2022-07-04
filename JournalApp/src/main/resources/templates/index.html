@@ -18,6 +18,27 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between mb-3  sticky-top">
+    <a class="navbar-brand mx-3" href="#"  th:text=" ${#authentication.getPrincipal().getUsername()} + '\'s Journal' " >MyJournal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+        <ul class="navbar-nav ">
+            <li class="nav-item active">
+                <a class="nav-link" href="/userPortal">User Portal </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/JournalEntries">All Entries</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
 <h1>Welcome to the home page! Register or Login to move forward</h1>
 
 

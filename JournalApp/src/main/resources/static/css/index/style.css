@@ -1,5 +1,21 @@
-body {
-    background-image: url("../../images/ravi-pinisetti-1zikZJVXSfA-unsplash.jpg");
-    color: black;
+html {
+    min-height:100%
 }
 
+body {
+    background: rgb(84,53,80);
+    background: linear-gradient(298deg, rgba(84,53,80,1) 0%, rgba(32,19,52,1) 9%, rgba(2,0,36,1) 32%, rgba(2,0,36,1) 86%, rgba(84,53,80,1) 100%, rgba(2,0,36,1) 100%);
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.card {
+    background-color: transparent;
+    border: 1px solid rgb(255 255 255 / 53%);
+}
+
+.btn-dark {
+    border-radius: 0.5rem;
+    background-color: #3c1c4a;
+
+}
