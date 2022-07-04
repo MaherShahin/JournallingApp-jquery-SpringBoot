@@ -16,7 +16,8 @@ Technologies used:
 - MySQL
 
 To do:
--Add email verification tokens to the registration process before enabling the acccounts
--Add email alert whenever a login happens
--Encryption of Journal Entries
--Customizable Journal Prompts 
+
+- Add email verification tokens to the registration process before enabling the acccounts
+- Add email alert whenever a login happens
+- Encryption of Journal Entries
+- Customizable Journal Prompts 
