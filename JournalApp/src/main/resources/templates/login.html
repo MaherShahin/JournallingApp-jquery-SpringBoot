@@ -45,9 +45,17 @@
             <br>
             <h5> Don't have an account yet? Register with us</h5>
             <a href="/register" class="btn btn-dark my-1" role="button"> Register</a>
+
+            <div th:if="${param.error}">
+              <p class="text-danger">Seems like you entered bad credentials. Please Try again </p>
+              <p> If you still don't have an account, register with us now</p>
+            </div>
+
           </div>
 
         </form>
+
+
 
         <div class="text-center" sec:authorize="isAuthenticated()">
           <a th:href="@{/logout}">Logout</a>

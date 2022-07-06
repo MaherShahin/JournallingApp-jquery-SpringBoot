@@ -30,6 +30,7 @@ public class CustomController {
 
     @GetMapping(value = {"/", "/index"})
     public String getHome(){
+
         return "index";
     }
 
@@ -40,7 +41,11 @@ public class CustomController {
     }
 
     @GetMapping(value = "/login")
-    public String loginUser(@ModelAttribute User user){
+    public String loginUser(@RequestParam(value = "error",required = false) String error,@ModelAttribute User user, Model model){
+        if (error != null){
+            error = "Ooops user doesn't exists! Bad credentials";
+            model.addAttribute("error",error);
+        }
         return "login";
     }
 
