@@ -78,53 +78,5 @@ public class CustomController {
     }
 
 
-    // Entry Manipulation
-    @GetMapping("/JournalEntries")
-    public String getEntries(@ModelAttribute JournalEntry entry, Model model){
-
-        User user = userDetailService.getAuthenticatedUser();
-
-        model.addAttribute("user", user);
-        model.addAttribute("entries", user.getEntries());
-
-        return "JournalEntries";
-    }
-
-    @PostMapping("/saveEntry")
-    public String saveEntry(@ModelAttribute JournalEntry entry){
-
-        userDetailService.addEntry(entry);
-
-        return "redirect:/JournalEntries";
-    }
-
-    @RequestMapping("/deleteEntry/{entryId}")
-    public String deleteEntry(@PathVariable Long entryId){
-
-        User user = userDetailService.getAuthenticatedUser();
-        userDetailService.removeEntry(user.getUser_id(), entryId);
-
-        return "redirect:/JournalEntries";
-    }
-
-    //Returns a single entry ready to be edited
-    @GetMapping("/editEntry/{entryId}")
-    public String editEntry(@PathVariable Long entryId, Model model){
-
-        User user = userDetailService.getAuthenticatedUser();
-        model.addAttribute("user",user);
-        model.addAttribute("entry", userDetailService.getEntry(user.getUser_id(),entryId));
-        return "editEntry";
-
-    }
-    //Sends the request to update the Entry
-    @RequestMapping("/updateEntry/{entryId}")
-    public String updateEntry(@PathVariable Long entryId, @ModelAttribute JournalEntry entry){
-
-        User user = userDetailService.getAuthenticatedUser();
-
-        userDetailService.updateEntry(user.getUser_id(),entryId,entry);
-        return"redirect:/JournalEntries";
-    }
 
 }

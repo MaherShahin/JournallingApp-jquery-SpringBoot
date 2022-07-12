@@ -44,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/userPortal",true)
                 .and()
                 .logout(logout->logout.logoutUrl("/logout"))
+                .csrf().disable()
                 .httpBasic();
     }
 
